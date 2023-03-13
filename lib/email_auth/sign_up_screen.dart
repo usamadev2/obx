@@ -112,6 +112,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
         listRef: [controller.ref, referCode],
         uid: uid,
         email: email,
+        parentUid: null,
         name: '',
         referCode: referCode,
         referLink: referLink!,
