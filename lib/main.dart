@@ -2,17 +2,16 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:new_app/controllers/dynamic_link_controller.dart';
-import 'package:new_app/controllers/rewards_controller.dart';
-import 'package:new_app/email_auth/log_in_screen.dart';
 import 'package:new_app/firebase_options.dart';
 
+import 'controllers/dynamic_link_controller.dart';
+import 'controllers/rewards_controller.dart';
 import 'email_auth/home.dart';
+import 'email_auth/sign_up_screen.dart';
 
 void main(List<String> args) async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
-  // await DepLinkService.instance?.handleDynamicLinks();
 
   Get.put<DynamicLinkController>(DynamicLinkController()).handleDynamicLinks();
   Get.put(RewardsController());
@@ -27,9 +26,9 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: (FirebaseAuth.instance.currentUser != null)
-          ? const RewardHomeScreen()
-          : const LogInScreen(),
+      home: FirebaseAuth.instance.currentUser != null
+          ? const SignUpScreen()
+          : const RewardHomeScreen(),
     );
   }
 }

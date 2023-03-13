@@ -1,7 +1,5 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:new_app/screens/email_auth/signin_screen.dart';
 
 class Homescreen extends StatefulWidget {
@@ -38,7 +36,7 @@ class _HomescreenState extends State<Homescreen> {
     );
     Navigator.pushReplacement(context, MaterialPageRoute(
       builder: (context) {
-        return const SigninScreen();
+        return const SigninScreenUs();
       },
     ));
   }

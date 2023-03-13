@@ -68,11 +68,10 @@ class UserRepository {
     currentUserNotifier.value = await getUser(uid!);
     listenToCurrentUser(uid);
     notifyListenersUser();
+    if (referrerCode.isNotEmpty) {
+      await rewardUser(uid, referrerCode);
+    }
     return null;
-
-    // if (referrerCode.isNotEmpty) {
-    //   await rewardUser(uid, referrerCode);
-    // }
   }
 
   Future<User> getUser(String uid) async {

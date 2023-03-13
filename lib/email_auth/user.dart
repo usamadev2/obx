@@ -8,8 +8,10 @@ class UserS {
   final String referCode;
   final String referLink;
   final int reward;
+  final List listRef;
 
   UserS({
+    required this.listRef,
     required this.uid,
     required this.email,
     required this.name,
@@ -22,6 +24,7 @@ class UserS {
   factory UserS.fromJson(Map<String, dynamic> data) {
     return UserS(
       uid: data['uid'] ?? '',
+      listRef: data['listRef'] ?? '',
       name: data['name'] ?? '',
       email: data['email'] ?? '',
       referCode: data['refer_code'] ?? '',
@@ -34,6 +37,7 @@ class UserS {
   factory UserS.empty() {
     return UserS(
       uid: '',
+      listRef: [],
       name: '',
       email: '',
       referCode: '',
@@ -49,6 +53,7 @@ class UserS {
 
     return other is UserS &&
         other.uid == uid &&
+        other.listRef == listRef &&
         other.email == email &&
         other.name == name &&
         other.referralCode == referralCode &&
@@ -61,6 +66,7 @@ class UserS {
   int get hashCode {
     return uid.hashCode ^
         email.hashCode ^
+        listRef.hashCode ^
         referralCode.hashCode ^
         name.hashCode ^
         referCode.hashCode ^
@@ -71,6 +77,7 @@ class UserS {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'uid': uid,
+      'listRef': listRef,
       'email': email,
       'name': name,
       'referralCode': referralCode,
@@ -83,6 +90,7 @@ class UserS {
   factory UserS.fromMap(Map<String, dynamic> map) {
     return UserS(
       uid: map['uid'] as String,
+      listRef: map['listRef'] as List,
       email: map['email'] as String,
       name: map['name'] as String,
       referralCode: map['referralCode'] as String,

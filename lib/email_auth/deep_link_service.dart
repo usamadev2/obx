@@ -11,6 +11,7 @@ class DepLinkService {
     return _instance;
   }
 
+  // ValueNotifier<String> referrerCode = ValueNotifier<String>('');
   final dynamicLink = FirebaseDynamicLinks.instance;
 
   Future<String> createReferLink(String referCode) async {

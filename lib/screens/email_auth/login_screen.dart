@@ -2,14 +2,14 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:new_app/screens/email_auth/signin_screen.dart';
 
-class SignUpScreen extends StatefulWidget {
-  const SignUpScreen({super.key});
+class SignUpScreenUs extends StatefulWidget {
+  const SignUpScreenUs({super.key});
 
   @override
-  State<SignUpScreen> createState() => _SignUpScreenState();
+  State<SignUpScreenUs> createState() => _SignUpScreenUsState();
 }
 
-class _SignUpScreenState extends State<SignUpScreen> {
+class _SignUpScreenUsState extends State<SignUpScreenUs> {
   TextEditingController emailController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
   TextEditingController conPasswordController = TextEditingController();
@@ -43,7 +43,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
     );
   }
 
-  void signUp() async {
+  signUp() async {
     String email = emailController.text.trim();
     String password = passwordController.text.trim();
     String conPassword = conPasswordController.text.trim();
@@ -63,7 +63,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
             context,
             MaterialPageRoute(
               builder: (context) {
-                return const SigninScreen();
+                return const SigninScreenUs();
               },
             ),
           );

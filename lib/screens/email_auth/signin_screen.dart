@@ -1,15 +1,19 @@
+import 'dart:developer';
+
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:new_app/screens/email_auth/home.dart';
 
-class SigninScreen extends StatefulWidget {
-  const SigninScreen({super.key});
+import 'forgot_password.dart';
+
+class SigninScreenUs extends StatefulWidget {
+  const SigninScreenUs({super.key});
 
   @override
-  State<SigninScreen> createState() => _SigninScreenState();
+  State<SigninScreenUs> createState() => _SigninScreenUsState();
 }
 
-class _SigninScreenState extends State<SigninScreen> {
+class _SigninScreenUsState extends State<SigninScreenUs> {
   TextEditingController emailController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
 
@@ -33,6 +37,16 @@ class _SigninScreenState extends State<SigninScreen> {
             signIn();
           },
           child: const Text('Sign in'),
+        ),
+        ElevatedButton(
+          onPressed: () {
+            Navigator.push(
+                context,
+                MaterialPageRoute(
+                    builder: (context) => const ForgotPasswordScreen()));
+            log('forgot');
+          },
+          child: const Text('forgot password'),
         ),
       ]),
     );
