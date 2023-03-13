@@ -4,6 +4,7 @@ import 'package:new_app/email_auth/user.dart';
 
 class RewardsController extends GetxController {
   FirebaseFirestore firestore = FirebaseFirestore.instance;
+
   Future<void> addReward(String ref) async {
     // getting parent user ref
     QuerySnapshot querySnapshot = await firestore
@@ -58,6 +59,24 @@ class RewardsController extends GetxController {
               'reward': reward,
             },
           );
+          // for next user (2 $)
+          final fourParentQuerySnapshot = await firestore
+              .collection('users')
+              .where('referCode', isEqualTo: userS.referralCode)
+              .get();
+          if (fourParentQuerySnapshot.docs.isNotEmpty) {
+            UserS userS = UserS.fromMap(
+              fourParentQuerySnapshot.docs.first.data(),
+            );
+            DocumentReference documentReference =
+                fourParentQuerySnapshot.docs[0].reference;
+            int reward = userS.reward + 2;
+            documentReference.update(
+              {
+                'reward': reward,
+              },
+            );
+          }
         }
       }
     }
